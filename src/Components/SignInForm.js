@@ -4,15 +4,16 @@ import "react-bootstrap"
 
 export class SignInForm extends Component {
     render() {
+      const style = {
+        maxWidth: 200
+      }
       return (
-
-<div className="container">
+<div className="container" style={style}>
   <Form>
 <Form.Group controlId="formBasicEmail">
-<Form.Label>Email address</Form.Label>
-<Form.Control type="email" placeholder="Enter email" />
+<Form.Label>Username</Form.Label>
+<Form.Control type="text" placeholder="Username" />
 <Form.Text className="text-muted">
-We'll never share your email with anyone else.
 </Form.Text>
 </Form.Group>
 

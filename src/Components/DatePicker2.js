@@ -22,10 +22,14 @@ class DatePicker2 extends React.Component {
   }
 
   render() {
+    const style = {
+      maxWidth: 200
+    }
     return (
         <div>
             <h6>When</h6>
-      <DatePicker
+      <DatePicker 
+        style={style}
         selected={this.state.startDate}
         onChange={this.handleChange}
       />
