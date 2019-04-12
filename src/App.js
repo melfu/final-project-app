@@ -9,16 +9,7 @@ import Background from "./backgroundImage";
 import Results from "./Components/Results";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: "",
-      password: "",
-      where: "Austin",
-      when: new Date(),
-      eventType: ""
-    };
-  }
+
   render() {
     const style = {
       backgroundImage: `url(${Background})`,
@@ -35,6 +26,7 @@ class App extends Component {
             <h3>NearBy helps you plan a fun night out. Pick a main event and it will show you the highest-rated bars and restaurants nearby for a hassle free, easy going good time.</h3>
             <br></br>
             <SignInForm></SignInForm>
+            <Results></Results>
         </div>
       }/>
       <Route path="/signedin" render={()=>
@@ -48,6 +40,7 @@ class App extends Component {
         <ActivityPicker></ActivityPicker>
         <br></br>
         <br></br>
+
         </div>
       }/>
       <Route path="/results" component={Results} />
