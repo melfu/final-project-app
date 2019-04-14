@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-const DEFAULT_QUERY = 'redux';
+//const DEFAULT_QUERY = 'redux';
 
 export class Results extends Component {
   constructor(props) {
@@ -10,48 +10,34 @@ export class Results extends Component {
           where: "Austin",
           when: new Date(),
           eventType: "",
-          isLoaded: false,
-          events: []
+          isLoaded: true
         };
   }
     componentDidMount() {
         const eventbrite = "https://www.eventbriteapi.com/v3/events/search/?sort_by=best&location.address=1100+Congress+Ave%2C+Austin%2C+TX+78701&location.within=20mi&token=TG6RXBBLAZPSB67I4NIP"
-        let data = fetch(eventbrite + DEFAULT_QUERY)
-        data.then(results => results.json()
-        .then(res => {
-            return this.setState({ events: res.events, isLoaded: true });
-        }));
+        fetch(eventbrite)
+        .then(response => response.json())
+        .then(data => {
+            this.setState({ events: data.events, isLoaded: false });
+        })
+        .catch(error => {
+        console.log("something bad happened somewhere, rollback!", error);
+        });
     }
-        // .catch(error => {
-        // console.log("something bad happened somewhere, rollback!", error);
-        // });
-
   render() {
-      let events = this.state.events;
-      let isLoaded = this.state.isLoaded;
-      if (!isLoaded) {
-          return <div>Loading...</div>
-      } else {
-          return (
-            <React.Fragment>
-                { events.map((event) => 
-                    {
-                        return <Result key={event.id} event={event.name.text} />;
-                    }
-                    )}
-                
-            </React.Fragment>
-          )
-      }
+      const event = this.state.events;
+      const isLoaded = this.state.isLoaded;
+      return isLoaded ? (
+           <div>Loading...</div>
+      ): (
+     <ul>
+                 {event.map((event, id) => 
+                 ( <h1 key={id}>{event.name.text}</h1> ))} 
+          </ul>)
+          
       };
-    }
+    };
 
-const Result = (props) => <h1>{props.event.name.text}</h1>
+//const Result = (props) => <h1>{props.event.name.text}</h1>
+
 export default Results;
-// let events = data.results.map((event, index) => {
-//     return (
-//         <div key = {index}>
-//             {event} 
-//         </div>
-//         )
-//     })

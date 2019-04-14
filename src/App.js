@@ -1,38 +1,64 @@
 import React, { Component } from "react";
-import SignInForm, {} from "./Components/SignInForm";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import LocationPicker from "./Components/LocationPicker";
-import ActivityPicker from "./Components/ActivityPicker";
-import DatePicker2 from "./Components/DatePicker2";
 import Background from "./backgroundImage";
-import Results from "./Components/Results";
+// import SignInForm, {} from "./components/SignInForm";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./utils/setAuthToken";
+import { setCurrentUser, logoutUser } from "./actions/authActions";
+
+import { Provider } from "react-redux";
+import store from "./store";
+
+// import LocationPicker from "./components/LocationPicker";
+// import ActivityPicker from "./components/ActivityPicker";
+// import DatePicker2 from "./components/DatePicker2";
+//import Results from "./components/Results";
+import Navbar from "./components/layout/Navbar";
+import Landing from "./components/layout/Landing";
+import Register from "./components/auth/Register";
+import Login from "./components/auth/Login";
+import PrivateRoute from "./components/private-route/PrivateRoute";
+import Dashboard from "./components/dashboard/Dashboard";
+
+
+// Check for token to keep user logged in
+if (localStorage.jwtToken) {
+  // Set auth token header auth
+  const token = localStorage.jwtToken;
+  setAuthToken(token);
+  // Decode token and get user info and exp
+  const decoded = jwt_decode(token);
+  // Set user and isAuthenticated
+  store.dispatch(setCurrentUser(decoded));
+// Check for expired token
+  const currentTime = Date.now() / 1000; // to get in milliseconds
+  if (decoded.exp < currentTime) {
+    // Logout user
+    store.dispatch(logoutUser());
+    // Redirect to login
+    window.location.href = "./login";
+  }
+}
 
 class App extends Component {
 
   render() {
-    const style = {
-      backgroundImage: `url(${Background})`,
-      textAlign: 'center',
-      color: 'silver',
-      fontWeight:'bold'
-    }
     return (
+      <Provider>
       <Router>
-      <div style = {style} className= "Main" >
-      <h2>NearBy-Final Project App</h2>
-      <Route exact={true} path="/" render={()=>
-        <div>
-            <h3>NearBy helps you plan a fun night out. Pick a main event and it will show you the highest-rated bars and restaurants nearby for a hassle free, easy going good time.</h3>
-            <br></br>
-            <SignInForm></SignInForm>
-            <Results></Results>
+        <div className="App" style={{ backgroundImage: `url(${Background})`, color: 'turquoise',height: "75vh" }}>
+          <Navbar />
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+          <Switch>
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            </Switch>
         </div>
-      }/>
-      <Route path="/signedin" render={()=>
+     
+      {/* <Route path="/signedin" render={()=>
       <div>
         <br></br>
-        <LocationPicker></LocationPicker>
         <br></br>
         <DatePicker2></DatePicker2>
         <br></br>
@@ -40,13 +66,13 @@ class App extends Component {
         <ActivityPicker></ActivityPicker>
         <br></br>
         <br></br>
-
+        <Results></Results>
         </div>
       }/>
-      <Route path="/results" component={Results} />
+      <Route path="/results" component={Results} /> */}
 
-      </div>
       </Router>
+      </Provider>
     ) 
   }
 }
