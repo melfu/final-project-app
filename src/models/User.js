@@ -28,6 +28,11 @@ const UserSchema = new Schema({
     type: String,
     required: true,
     max: 20
+  },
+  password2: {
+    type: String,
+    required: true,
+    max: 20
   }
   // date: {
   //   type: Date,

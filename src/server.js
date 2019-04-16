@@ -1,5 +1,5 @@
 const express = require('express');
-var cors = require("cors");
+const cors = require("cors");
 const bodyParser = require('body-parser');
 const user = require('./routes/user.route'); // Imports routes for the products
 const authuser = require('./routes/api/users'); // Imports routes for the products
@@ -46,6 +46,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cors());
 app.use('/user', user);
 app.use('/api', authuser);
+
+// app.use(app.router);
+// routes.initialize(app);
 
 // Serve static assets if in production
 if(process.env.NODE_ENV === 'production') {

@@ -65,8 +65,8 @@ return (
                   onChange={this.onChange}
                   value={this.state.username}
                   error={errors.username}
-                  id="name"
-                  type="name"
+                  id="username"
+                  type="username"
                   className={classnames("", {
                     invalid: errors.username || errors.usernamenotfound
                   })}
@@ -92,6 +92,7 @@ return (
               </div>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
                 <button
+                  onClick={this.onSubmit}
                   style={{
                     width: "150px",
                     borderRadius: "3px",

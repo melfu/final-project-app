@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 //const DEFAULT_QUERY = 'redux';
+import Background from "../backgroundImage";
 
 export class Results extends Component {
   constructor(props) {
@@ -28,16 +29,21 @@ export class Results extends Component {
       const event = this.state.events;
       const isLoaded = this.state.isLoaded;
       return isLoaded ? (
-           <div>Loading...</div>
+           <div> Loading...</div>
       ): (
-     <ul>
+     <ul style={{ backgroundImage: `url(${Background})`}} >
                  {event.map((event, id) => 
-                 ( <h1 key={id}>{event.name.text}</h1> ))} 
-          </ul>)
-          
+                 ( 
+                 <React.Fragment key={id}>
+                 
+                 <h1 key={id+"name"}> {event.name.text} </h1>
+                 <h5 key={id+"text"}>{event.description.text} </h5>
+                 <link key={id+"url"} href = {`event.resource_uri`}></link>
+            
+                 </React.Fragment>
+                 ))} 
+          </ul>)  
       };
     };
-
-//const Result = (props) => <h1>{props.event.name.text}</h1>
 
 export default Results;

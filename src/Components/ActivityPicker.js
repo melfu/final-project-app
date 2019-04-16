@@ -11,7 +11,6 @@ export class ActivityPicker extends Component {
   <Dropdown.Item href="#/action-3">Sports and Outdoors</Dropdown.Item>
   <Dropdown.Item href="#/action-4">Community</Dropdown.Item>
   <Dropdown.Item href="#/action-5">Film and Media</Dropdown.Item>
-
 </DropdownButton>
       )
     }
