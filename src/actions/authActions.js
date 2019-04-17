@@ -8,6 +8,7 @@ import {
 } from "./types";
 // Register User
 export const registerUser = (userData, history) => dispatch => {
+  console.log(userData)
   axios
     .post("/api/users/register", userData)
     .then(res => history.push("/login")) // re-direct to login on successful register
@@ -24,8 +25,10 @@ export const loginUser = userData => dispatch => {
     .post("/api/users/login", userData)
     .then(res => {
       // Save to localStorage
-// Set token to localStorage
-      const { token } = res.data;
+      // Set token to localStorage
+      const {
+        token
+      } = res.data;
       localStorage.setItem("jwtToken", token);
       // Set token to Auth header
       setAuthToken(token);
@@ -34,15 +37,17 @@ export const loginUser = userData => dispatch => {
       // Set current user
       dispatch(setCurrentUser(decoded));
     })
-    .catch(err =>
+    .catch(err => {
+      console.log(err)
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data
       })
-    );
+    });
 };
 // Set logged in user
 export const setCurrentUser = decoded => {
+  console.log('setCurrentUser', decoded);
   return {
     type: SET_CURRENT_USER,
     payload: decoded

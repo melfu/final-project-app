@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require("cors");
+// const cors = require("cors");
 const bodyParser = require('body-parser');
 const user = require('./routes/user.route'); // Imports routes for the products
 const authuser = require('./routes/api/users'); // Imports routes for the products
@@ -41,10 +41,11 @@ require("./config/passport")(passport);
 // Routes
 app.use("/api/users", users);
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(cors());
-app.use('/user', user);
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({extended: false}));
+// app.use(cors());
+
+// app.use('/user', user);
 app.use('/api', authuser);
 
 // app.use(app.router);

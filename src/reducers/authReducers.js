@@ -9,8 +9,10 @@ import {
     loading: false
   };
   export default function(state = initialState, action) {
+    console.log('action, state', action, state)
     switch (action.type) {
       case SET_CURRENT_USER:
+        console.log('SET_CURRENT_USER')
         return {
           ...state,
           isAuthenticated: !isEmpty(action.payload),

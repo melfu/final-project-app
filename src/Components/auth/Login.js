@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
@@ -43,6 +43,11 @@ const userData = {
   };
 render() {
     const { errors } = this.state;
+    console.log(this.props.auth)
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard"); 
+      return null;
+    }
 return (
       <div className="container">
         <div style={{ marginTop: "4rem" }} className="row">
@@ -125,4 +130,4 @@ Login.propTypes = {
   export default connect(
     mapStateToProps,
     { loginUser }
-  )(Login);
+  )(withRouter (Login));
