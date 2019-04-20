@@ -8,14 +8,15 @@ export class Results extends Component {
         this.state = {
           username: "",
           password: "",
-          where: "Austin",
           when: new Date(),
-          eventType: "",
+          categoryId: "",
           isLoaded: true
         };
   }
     componentDidMount() {
-        const eventbrite = "https://www.eventbriteapi.com/v3/events/search/?sort_by=best&location.address=1100+Congress+Ave%2C+Austin%2C+TX+78701&location.within=20mi&token=TG6RXBBLAZPSB67I4NIP"
+       const categoryId = this.state.categoryId;
+       const date = this.state.when;
+        const eventbrite = "https://www.eventbriteapi.com/v3/events/search/?sort_by=best&location.address=1100+Congress+Ave%2C+Austin%2C+TX+78701&location.within=20mi&token=TG6RXBBLAZPSB67I4NIP&categories=" + categoryId + date
         fetch(eventbrite)
         .then(response => response.json())
         .then(data => {

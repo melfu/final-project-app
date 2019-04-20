@@ -1,4 +1,4 @@
-import React from "react";
+import  React from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -12,26 +12,26 @@ class DatePicker2 extends React.Component {
     this.state = {
       startDate: new Date()
     };
-    this.handleChange = this.handleChange.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(date) {
-    this.setState({
-      startDate: date
-    });
-  }
+  // handleChange(date) {
+  //   this.setState({
+  //     startDate: date
+  //   });
+  // }
 
   render() {
     const style = {
       maxWidth: 200
-    }
+    };
     return (
         <div>
             <h6>When</h6>
       <DatePicker 
         style={style}
         selected={this.state.startDate}
-        onChange={this.handleChange}
+        onChange={this.props.handlePickDate}
       />
       </div>
     );
