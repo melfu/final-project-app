@@ -4,15 +4,13 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import ActivityPicker from "../ActivityPicker";
 import DatePicker2 from "../DatePicker2"
-// import Results from '../Results'
-import Background from "../../backgroundImage";
+import Results from '../Results'
 
 class Dashboard extends Component {
   state = {
-    events: null,
-    date: null,
-    isLoading: true
-  };
+    categoryId: null,
+    date: null
+  }
 
   onLogoutClick = e => {
     e.preventDefault();
@@ -30,46 +28,17 @@ class Dashboard extends Component {
 //   console.log("state",this.state)
 //   console.log('activity picked!')
 // }
-// handlePickDate = (event) => {
-// // create a function to handle date picker and set state
-// this.setState({
-//   date: event.target.value
-// });
-// console.log("event.target.value", event.target.value)
-// console.log("state",this.state)
-// console.log('date picked!')
-// }
-eventfetch=()=> {
-    const activity = localStorage.getItem("activity");
-    const eventbrite = `https://www.eventbriteapi.com/v3/events/search/?sort_by=best&location.address=1100+Congress+Ave%2C+Austin%2C+TX+78701&location.within=20mi&categories=`+ activity + `&token=TG6RXBBLAZPSB67I4NIP`;
-    fetch(eventbrite)
-    .then(response => response.json())
-    .then(data => {
-        this.setState({ events: data.events, isLoading: false });
-    })
-    .catch(error => {
-    console.log("something bad happened somewhere, rollback!", error);
-    });
-
-      return this.state.isLoading ? (
-           <div> Loading...</div>
-      ): (
-        <ul style={{ backgroundImage: `url(${Background})`}} >
-                 {this.state.events.map((event, id) =>
-                 ( 
-                 <React.Fragment key={id}>
-                 
-                 <h1 key={id+"name"}> {event.name.text} </h1>
-                 <h5 key={id+"text"}>{event.summary} </h5>
-                 <link key={id+"url"} href = {`event.resource_uri`}></link>
-            
-                 </React.Fragment>
-                 ))} 
-          </ul>
-      )};
+handlePickDate = (event) => {
+// create a function to handle date picker and set state
+this.setState({
+  date: event.target.value
+});
+console.log("event.target.value", event.target.value)
+console.log("state",this.state)
+console.log('date picked!')
+}
 render() {
-
-    // const { user } = this.props.auth;
+    const { user } = this.props.auth;
 return (
       <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row">
@@ -83,16 +52,15 @@ return (
             </h4>
             <ActivityPicker />
             <DatePicker2 handlePickDate={this.handlePickDate}></DatePicker2>
-
-            <button 
+            {/* <Results categoryId={this.state.categoryId} date={this.state.date} /> */}
+            <button
               style={{
                 width: "150px",
                 borderRadius: "3px",
                 letterSpacing: "1.5px",
                 marginTop: "1rem"
               }}
-              
-              onClick={this.eventfetch}
+              onClick={this.onLogoutClick}
               className="btn btn-large waves-effect waves-light hoverable blue accent-3"
             >
               Search
@@ -130,3 +98,4 @@ export default connect(
 
 // move fetch to inside search button / searchEvent function using setLocalStorage, onClick
 // delete everything from Results and only fetch
+// 

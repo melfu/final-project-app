@@ -12,21 +12,24 @@ class DatePicker2 extends React.Component {
     this.state = {
       startDate: new Date()
     };
-    // this.handleChange = this.handleChange.bind(this);
   }
 
-  // handleChange(date) {
-  //   this.setState({
-  //     startDate: date
-  //   });
-  // }
+  handlePickDate = (event) => {
+    // create a function to handle date picker and set state
+    this.setState({
+      date: event.target.value
+    });
+    console.log("event.target.value", event.target.value)
+    console.log("state",this.state)
+    console.log('date picked!')
+    }
 
   render() {
     const style = {
       maxWidth: 200
     };
     return (
-        <div>
+      <div>
             <h6>When</h6>
       <DatePicker 
         style={style}
