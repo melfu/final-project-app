@@ -4,10 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
-
 import { Provider } from "react-redux";
 import store from "./store";
-
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
@@ -16,6 +14,7 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import Results from "./components/Results";
 
+// LOGIN STUFF-DONT CHANGE---------------------------
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -33,7 +32,7 @@ if (localStorage.jwtToken) {
     // Redirect to login
     window.location.href = "./login";
   }
-}
+} // --------------------------------------------------
 
 class App extends Component {
 
