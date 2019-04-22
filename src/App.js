@@ -12,7 +12,7 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
-import Results from "./components/Results";
+import Album from './components/Album';
 
 // LOGIN STUFF-DONT CHANGE---------------------------
 // Check for token to keep user logged in
@@ -32,24 +32,37 @@ if (localStorage.jwtToken) {
     // Redirect to login
     window.location.href = "./login";
   }
-} // --------------------------------------------------
+} 
+// --------------------------------------------------
 
 class App extends Component {
+
+  state = {
+    events: []
+  };
+
+  setEvents = (events) => {
+    this.setState({
+      events: events
+    });
+  };
 
   render() {
     return (
       <Provider store={store}>
         <Router >
           <div className="App" style={{ backgroundImage: `url(${Background})`, opacity: 0.5,
-          height: "85vh" }}>
+          //height: "85vh"
+           }}>
           <Navbar />
           <Route exact path="/" component={Landing} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/results" component={Results} />
+          <Route exact path="/results" component={() => <Album events={this.state.events} />} />
+          
 
           <Switch>
-            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute exact path="/dashboard" component={() => <Dashboard setEvents={this.setEvents} />} />
           </Switch>
           </div>
         </Router>
