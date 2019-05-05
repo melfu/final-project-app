@@ -1,12 +1,13 @@
-const express = require('express');
+console.log('final-project/server/server.js');
+const express = require('../node_modules/express');
 // const cors = require("cors");
-const bodyParser = require('body-parser');
+const bodyParser = require('../node_modules/body-parser');
 // const user = require('./routes/user.route'); // Imports routes for the products
-const authuser = require('../final-project/src/routes/api/users'); // Imports routes for the products
-const passport = require("passport");
-const users = require("../final-project/src/routes/api/users");
+const authuser = require('../src/routes/api/users'); // Imports routes for the products
+const passport = require("../node_modules/passport/lib");
+const users = require("../src/routes/api/users");
 const path = require('path');
-var cors = require('cors');
+var cors = require('../node_modules/cors/lib');
 
 const app = express();
 // const router = express.Router();
