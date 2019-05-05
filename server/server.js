@@ -1,4 +1,6 @@
+
 console.log('final-project/server/server.js');
+require('dotenv').config();
 const express = require('../node_modules/express');
 // const cors = require("cors");
 const bodyParser = require('../node_modules/body-parser');
@@ -14,7 +16,7 @@ const app = express();
 // this is our MongoDB database
 const mongoose = require('mongoose');
 // DB Config
-const dbRoute = require("./config/keys").mongoURI;
+// const dbRoute = require("./config/keys").mongoURI;
 app.use(cors());
 // Bodyparser middleware
 app.use(
@@ -25,13 +27,13 @@ app.use(
 app.use(bodyParser.json());
 
 //connects our back end code with the database
-mongoose.connect(
-  dbRoute,
-  { useNewUrlParser: true }
-);
+// mongoose.connect(
+//   dbRoute,
+//   { useNewUrlParser: true }
+// );
 
-let mongoDB = process.env.MONGODB_URI || dbRoute;
-mongoose.connect(mongoDB);
+let mongoURI = process.env.MONGODB_URI; // || dbRoute;
+mongoose.connect(mongoURI);
 mongoose.Promise = global.Promise;
 
 let dbMongoose = mongoose.connection;
