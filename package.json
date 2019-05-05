@@ -43,6 +43,7 @@
   },
   "scripts": {
     "client-install": "npm install --prefix client",
+    "heroku-start": "node ./server/server.js",
     "server": "nodemon ./server/server.js",
     "client": "react-scripts start",
     "start": "node index.js",
