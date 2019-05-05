@@ -14,7 +14,7 @@ const app = express();
 // this is our MongoDB database
 const mongoose = require('mongoose');
 // DB Config
-const dbRoute = require("./config/keys").mongoURI;
+//const dbRoute = require("./config/keys").mongoURI;
 app.use(cors());
 // Bodyparser middleware
 app.use(
@@ -25,12 +25,12 @@ app.use(
 app.use(bodyParser.json());
 
 //connects our back end code with the database
-mongoose.connect(
-  dbRoute,
-  { useNewUrlParser: true }
-);
+// mongoose.connect(
+//   dbRoute,
+//   { useNewUrlParser: true }
+// );
 
-let mongoDB = process.env.MONGODB_URI || dbRoute;
+let mongoDB = process.env.MONGODB_URI; // || dbRoute;
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 
