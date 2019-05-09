@@ -9,6 +9,7 @@ const passport = require("../node_modules/passport/lib");
 const users = require("../src/routes/api/users");
 const path = require("path");
 var cors = require("../node_modules/cors/lib");
+const events = require("../src/routes/api/events");
 
 const app = express();
 // const router = express.Router();
@@ -48,6 +49,7 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 // Routes
 app.use("/api/users", users);
+app.use("/api/events", events)
 
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({extended: false}));
