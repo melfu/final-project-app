@@ -26,6 +26,8 @@ app.use(bodyParser.json());
 let mongoURI = process.env.MONGODB_URI; // || dbRoute;
 mongoose.connect(mongoURI);
 mongoose.Promise = global.Promise;
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 let dbMongoose = mongoose.connection;
 dbMongoose.on(
