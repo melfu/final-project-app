@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import { logoutUser} from "../../actions/authActions";
 import { withRouter} from "react-router-dom";
 import ActivityPicker from "../ActivityPicker";
-// import DatePicker2 from "../DatePicker2";
-// import Background from "../../backgroundImage"
 
 class Dashboard extends Component {
   constructor(props) {
@@ -19,18 +17,9 @@ class Dashboard extends Component {
     e.preventDefault();
     this.props.logoutUser();
   }
-  // handlePickDate = (event) => {
-  //   // create a function to handle date picker and set state
-  //   this.setState({
-  //     date: event.target.value
-  //   });
-  //   console.log(event.target.value)
-
-  // }
+  // FUNCTION THAT FETCHES EVENTS FROM EVENTBRITE--------------//
   eventfetch = () => {
-    // const token = `&token=TG6RXBBLAZPSB67I4NIP`;
     const activity = localStorage.getItem("activity");
-    // const eventbrite = `https://www.eventbriteapi.com/v3/events/search/?expand=venue,logo&sort_by=best&location.address=1100+Congress+Ave%2C+Austin%2C+TX+78701&location.within=20mi&categories=` + activity + token;
 
     fetch("/api/events/events?activity=" + activity)
       .then(response => response.json())
@@ -46,6 +35,8 @@ class Dashboard extends Component {
         this.props.history.push("/results")
       });
   }
+  //------------------------------------------------------------//
+
   render() {
     return ( 
     <div style = {{height: "75vh", fontFamily: "monospace", fontWeight: 'bold'}} className = "container valign-wrapper" >

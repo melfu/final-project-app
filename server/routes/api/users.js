@@ -28,8 +28,8 @@ router.post("/register", (req, res) => {
         return res.status(400).json({ username: "Username already exists" });
       } 
   const newUser = new User({
+        //  username: req.body.username,
           username: req.body.username,
-        //  email: req.body.email,
           password: req.body.password,
           password2: req.body.password2
         });

@@ -44,19 +44,19 @@ const newUser = {
 render() {
     const { errors } = this.state;
 return (
-      <div className="container">
+      <div style= {{ color: 'white', fontFamily: "monospace", fontWeight: 'bold'}} className="container">
         <div className="row">
           <div className="col s8 offset-s2">
             <Link to="/" className="btn-flat waves-effect">
-              <i className="material-icons left">keyboard_backspace</i> Back to
+              <i className="material-icons left" keyboard_backspace ></i> Back to
               home
             </Link>
-            <div className="col s12" style={{ paddingLeft: "11.250px" }}>
+            <div className="col s12" style={{ fontSize: '26px',  fontWeight: 'bold', paddingLeft: "11.250px" }}>
               <h4>
                 <b>Register</b> below
               </h4>
-              <p className="grey-text text-darken-1">
-                Already have an account? <Link to="/login">Log in</Link>
+              <p className="white-text text-darken-1">
+                Already have an account? <Link style={{color: 'red'}} to="/login">Log in</Link>
               </p>
             </div>
             <form noValidate onSubmit={this.onSubmit}>
@@ -71,7 +71,7 @@ return (
                     invalid: errors.username
                   })}
                 />
-                <label htmlFor="username">Username</label>
+                <label style={{color: 'white'}} htmlFor="username">Username</label>
               </div>
               <div className="input-field col s12">
                 <input
@@ -84,7 +84,7 @@ return (
                     invalid: errors.password
                   })}
                 />
-                <label htmlFor="password">Password</label>
+                <label style={{color: 'white'}} htmlFor="password">Password</label>
               </div>
               <div className="input-field col s12">
                 <input
@@ -97,7 +97,7 @@ return (
                     invalid: errors.password2
                   })}
                 />
-                <label htmlFor="password2">Confirm Password</label>
+                <label style={{color: 'white'}} htmlFor="password2">Confirm Password</label>
                 <span className="red-text">{errors.password2}</span>
 
               </div>
@@ -110,7 +110,7 @@ return (
                     marginTop: "1rem"
                   }}
                   type="submit"
-                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                  className="btn btn-large waves-effect waves-light hoverable red accent-3"
                 >
                   Sign up
                 </button>

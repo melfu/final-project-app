@@ -50,18 +50,18 @@ render() {
     }
 return (
       <div className="container">
-        <div style={{ marginTop: "4rem" }} className="row">
+        <div style= {{height: "75vh", color: 'white', fontFamily: "monospace", fontWeight: 'bold'}} className="row">
           <div className="col s8 offset-s2">
             <Link to="/" className="btn-flat waves-effect">
-              <i className="material-icons left">keyboard_backspace</i> Back to
+              <i style= {{ color: 'white', fontFamily: "monospace", fontWeight: 'bold'}} className="material-icons left" keyboard_backspace></i> Back to
               home
             </Link>
-            <div className="col s12" style={{ paddingLeft: "11.250px" }}>
+            <div className="col s12" style={{ fontSize: '26px',  fontWeight: 'bold', paddingLeft: "11.250px" }}>
               <h4>
                 <b>Login</b> below
               </h4>
-              <p className="grey-text text-darken-1">
-                Don't have an account? <Link to="/register">Register</Link>
+              <p className="white-text text-darken-1">
+                Don't have an account? <Link style={{color: 'red'}} to="/register">Register</Link>
               </p>
             </div>
             <form noValidate onSubmit={this.onSubmit}>
@@ -71,13 +71,13 @@ return (
                   value={this.state.username}
                   error={errors.username}
                   id="username"
-                  type="username"
+                  type="text"
                   className={classnames("", {
                     invalid: errors.username || errors.usernamenotfound
                   })}
                 />
-                <label htmlFor="name">Username</label>
-                <span className="red-text">
+                <label style={{color: 'white'}} htmlFor="name">Username</label>
+                <span className="black-text">
                   {errors.username}
                   {errors.usernamenotfound}
                 </span>
@@ -93,9 +93,9 @@ return (
                     invalid: errors.password || errors.passwordincorrect
                   })}
                 />
-                <label htmlFor="password">Password</label>
+                <label style={{color: 'white'}} htmlFor="password">Password</label>
               </div>
-              <div className="col s12" style={{ paddingLeft: "11.250px" }}>
+              <div className="col s12" style={{ fontWeight: 'bold', paddingLeft: "11.250px" }}>
                 <button
                   onClick={this.onSubmit}
                   style={{
@@ -105,7 +105,7 @@ return (
                     marginTop: "1rem"
                   }}
                   type="submit"
-                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                  className="btn btn-large waves-effect waves-light hoverable red accent-3"
                 >
                   Login
                 </button>
