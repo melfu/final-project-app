@@ -32,7 +32,10 @@ mongoose.set('useCreateIndex', true);
 let dbMongoose = mongoose.connection;
 dbMongoose.on(
   "error",
-);
+  (err) => {
+    console.log('mongoose error: ' + err);
+    }
+    );
 
 // Passport middleware
 app.use(passport.initialize());
