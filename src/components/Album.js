@@ -51,67 +51,19 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing.unit * 6,},});
 
-const handlePickEvent = (event) => {
-  // create a function to handle eventLoc picker and set state
-  this.setState({
-    nearBy: event.venue.address.address_1
-  });
-}
-
-//------------------------ABBYS YELP FETCH-------------------------------------------//
-
-// nearByfetch(rating) {  const api_key = 'XlHGE6JndutZqhtVQJ4mW5e3bojls6JthQTTxHtFLLH2YyvSGkemgmFkZb0qcbu8AL0AWg2Ti7D56ADVHBtqawDoelacBgkfmuLg1AP3WigRPvHAdPRiIIrY-5rDXHYx-MDuLZLINw';
-// // const activity = localStorage.getItem("activity");
-// const yelp = require('yelp-fusion');
-// const client = yelp.client(api_key, {
-//   mode: 'no-cors'
-// });
-
-//   const restaurant = this.props.returnedRestaurant
-//   const restaurantBody = {
-//       name: restaurant.name,
-//       genre: restaurant.categories[0].title,
-//       price: restaurant.price,
-//       location: restaurant.location.display_address.join(" "),
-//       rating: rating
-//   }
-//   fetch(`${process.env.REACT_APP_API_URL}/restaurants`, {
-//       method: "POST",
-//       body: JSON.stringify(restaurantBody),
-//       headers: {
-//           "Content-Type": "application/json"
-//       }
-//   })
-//       .then(res => res.json())
-//       .then(restaurantData => {
-//       })
-//       .then(this.setState({
-//           restaurantSaved: true
-//       }))
-//       // resetting restaurantSaved to false after 1 second to show saved message again
-//       .then(setTimeout(() => {
-//           this.setState({ restaurantSaved: false });
-//       }, 1000))}
-//-----------------------------------------------------------------------//
-
-//-----------------------FUNCTION THAT FETCHES WHATS NEARBY FROM YELP-----//
 const nearByfetch = () => {
-  const api_key = 'XlHGE6JndutZqhtVQJ4mW5e3bojls6JthQTTxHtFLLH2YyvSGkemgmFkZb0qcbu8AL0AWg2Ti7D56ADVHBtqawDoelacBgkfmuLg1AP3WigRPvHAdPRiIIrY-5rDXHYx-MDuLZLINw';
-  // const activity = localStorage.getItem("activity");
-  const yelp = require('yelp-fusion');
-  const client = yelp.client(api_key, {
-    mode: 'no-cors'
-  });
-   
-  client.search({
-    term: 'restaurant' || 'bar',
-    location: 'austin,tx',
-  }).then(response => {
-    console.log("yelp response:", response.jsonBody.businesses.name);
-    handlePickEvent();
-  }).catch(e => {
-    console.log(e);
-  });
+  var apiKey = "XlHGE6JndutZqhtVQJ4mW5e3bojls6JthQTTxHtFLLH2YyvSGkemgmFkZb0qcbu8AL0AWg2Ti7D56ADVHBtqawDoelacBgkfmuLg1AP3WigRPvHAdPRiIIrY-5rDXHYx"; 
+  var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Austin&term=restaurant";
+
+  var x = new XMLHttpRequest();
+  x.open('GET', myurl);
+  // I put "XMLHttpRequest" here, but you can use anything you want.
+  x.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+  x.setRequestHeader('Authorization','Bearer '+ apiKey);
+  x.onload = function() {
+      alert(x.responseText);
+  };
+  x.send();
 }
 
 function Album(props) {
