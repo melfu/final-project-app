@@ -14,6 +14,7 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import Album from './components/Album';
 import NearByMap from './components/NearByMap';
+import YelpFetchCards from "./components/YelpFetchCards";
 
 // LOGIN STUFF-DONT CHANGE--------------------------- //
 // Check for token to keep user logged in
@@ -43,10 +44,10 @@ class App extends Component {
     nearBy: []
   };
 }
-  setEvents = (events, nearBy) => {
+  setEvents = (events, businesses) => {
     this.setState({
       events: events,
-      nearBy: nearBy
+      businesses: businesses
     });
   };
 
@@ -61,9 +62,10 @@ class App extends Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/results" component={() => <Album nearByfetch={this.props.nearByfetch}
           events={this.state.events} />} />
+          <Route exact path="/yelpfetchcards" component={() => <YelpFetchCards setEvents={this.setEvents} nearByfetch={this.props.nearByfetch}/>} />
           <Route exact path="/nearbymap" component={() => <NearByMap handlePickEvent={this.handlePickEvent.bind(this)} setEvents={this.setEvents} />} />
           <Switch>
-            <PrivateRoute exact path="/dashboard" component={() => <Dashboard setEvents={this.setEvents} />} />
+            <PrivateRoute exact path="/dashboard" component={() =>  <Dashboard setEvents={this.setEvents} />} />
           </Switch>
           </div>
         </Router>

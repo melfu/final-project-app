@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Button from '@material-ui/core/Button';
@@ -12,7 +12,8 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Background from "../backgroundImage";
 import { Link } from "@material-ui/core";
-import NearByMap from './NearByMap';
+//import NearByMap from './NearByMap';
+import YelpFetchCards from './YelpFetchCards';
 
 const styles = theme => ({
   appBar: {
@@ -50,26 +51,40 @@ const styles = theme => ({
   footer: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing.unit * 6,},});
+// END STYLE //
 
-const nearByfetch = () => {
-  var apiKey = "XlHGE6JndutZqhtVQJ4mW5e3bojls6JthQTTxHtFLLH2YyvSGkemgmFkZb0qcbu8AL0AWg2Ti7D56ADVHBtqawDoelacBgkfmuLg1AP3WigRPvHAdPRiIIrY-5rDXHYx"; 
-  var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Austin&term=restaurant";
 
-  var x = new XMLHttpRequest();
-  x.open('GET', myurl);
-  // I put "XMLHttpRequest" here, but you can use anything you want.
-  x.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-  x.setRequestHeader('Authorization','Bearer '+ apiKey);
-  x.onload = function() {
-      alert(x.responseText);
-  };
-  x.send();
+class Album extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    };
+  }
+  nearByfetch = () => {
+  
+    var apiKey = "XlHGE6JndutZqhtVQJ4mW5e3bojls6JthQTTxHtFLLH2YyvSGkemgmFkZb0qcbu8AL0AWg2Ti7D56ADVHBtqawDoelacBgkfmuLg1AP3WigRPvHAdPRiIIrY-5rDXHYx"; 
+    var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Austin&term=restaurant";
+  
+    var x = new XMLHttpRequest();
+    x.open('GET', myurl);
+    // I put "XMLHttpRequest" here, but you can use anything you want.
+    x.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    x.setRequestHeader('Authorization','Bearer '+ apiKey);
+    x.onload = function() {
+        alert(x.responseText);
+        const stuffNearby = x.responseText
+        this.props.setEvents(stuffNearby.businesses.name)
+      //  this.props.history.push("/yelpfetchcards")
+
+    };
+    x.send();
 }
+render() {
 
-function Album(props) {
-  const { classes, events = [] } = props;
+  const { classes, events = [] } = this.props;
   if (!events || events.length === 0) return null;
-console.log(events)
+    console.log(events)
   return (
     <React.Fragment>
       <CssBaseline />
@@ -97,7 +112,7 @@ console.log(events)
                     <Button component={Link} href={event.url} size="small" color="primary">
                       View Event
                     </Button>
-                    <Button onClick={nearByfetch} component={Link} to={NearByMap} size="small" color="primary">
+                    <Button onClick={this.nearByfetch} component={Link} to={YelpFetchCards} size="small" color="primary">
                       What's Nearby
                     </Button>
                   </CardActions>
@@ -119,6 +134,7 @@ console.log(events)
       {/* End footer */}
     </React.Fragment>
   );
+}
 }
 Album.propTypes = {
   classes: PropTypes.object.isRequired,
