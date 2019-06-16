@@ -45,6 +45,7 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "save": "^2.3.3",
+    "serverless-http": "^2.0.2",
     "validator": "^10.11.0",
     "yelp-api": "^1.0.3",
     "yelp-fusion": "^3.0.0"

@@ -8,7 +8,7 @@ const users = require("../src/routes/api/users");
 const path = require("path");
 var cors = require("../node_modules/cors/lib");
 const events = require("./routes/api/events");
-
+const serverless = require('serverless-http');
 const app = express();
 
 // this is our MongoDB database
@@ -63,3 +63,4 @@ const port = process.env.PORT || 5000; // process.env.port is Heroku's port
 app.listen(port, () => {
   console.log("Server is up and running on port number " + port);
 });
+module.exports.handler = serverless(app);
