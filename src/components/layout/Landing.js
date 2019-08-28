@@ -20,7 +20,7 @@ class Landing extends Component {
             NearBy helps you plan a fun night out! 
             </h4>
             <p className="flow-text white-text text-darken-1">
-            Pick a main event and I'll show you the best bars and restaurants nearby for a hassle free, easy going good time.
+            Pick a main event, and then choose from the best bars and restaurants nearby. Design your good time, and then send your friends the invite!
             </p>
             <br />
             <a href= '/register/'
