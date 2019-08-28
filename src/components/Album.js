@@ -10,7 +10,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import Background from "../backgroundImage";
+import "../backgroundImage.jpg";
 import { Link } from "@material-ui/core";
 //import NearByMap from './NearByMap';
 import YelpFetchCards from './YelpFetchCards';
@@ -97,7 +97,7 @@ render() {
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image= {event.logo ? event.logo.url : `${Background}`}
+                    image= {event.logo ? event.logo.url : url ("../backgroundImage.jpg")}
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
