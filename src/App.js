@@ -56,7 +56,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router >
-          <div className="App" style={{ backgroundImage: "./backgroundImage.jpg", opacity: 0.6 }}>
+          <div className="App" style={{ backgroundImage: url ("./backgroundImage.jpg"), opacity: 0.6 }}>
           <Navbar />
           <Route exact path="/" component={Landing} />
           <Route exact path="/register" component={Register} />
