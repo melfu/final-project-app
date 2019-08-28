@@ -10,7 +10,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import Background from "../backgroundImage.jpg";
+import Background from "../ryan-loughlin-8cLxPIIEYzo-unsplash.jpg";
 import { Link } from "@material-ui/core";
 //import NearByMap from './NearByMap';
 import YelpFetchCards from './YelpFetchCards';
