@@ -56,7 +56,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router >
-          <div className="App" style={{ height: 100%, backgroundImage: `url(${Background})`, opacity: 1, backgroundPosition: 'center', backgroundSize: 'cover' }}>
+          <div className="App" style={{ height: '100%', backgroundImage: `url(${Background})`, opacity: .8, backgroundPosition: 'center', backgroundSize: 'cover' }}>
           <Navbar />
           <Route exact path="/" component={Landing} />
           <Route exact path="/register" component={Register} />
