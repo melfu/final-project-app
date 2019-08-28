@@ -5,7 +5,6 @@ import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
   floatingLabelFocusStyle: {
-    color: "white",
     fontFamily: "monospace",
     border: "white"
 },
@@ -61,7 +60,7 @@ export class ActivityPicker extends Component {
       return (
         <form className={classes.container} noValidate autoComplete="off">
       <TextField 
-        style={{ fontFamily: "monospace", color: 'white', backgroundColor: "none" }}
+        style={{ borderStyle: "solid", borderColor: "white", fontFamily: "monospace", color: 'white', backgroundColor: "none" }}
             id="filled-uncontrolled"
             select
             className={classes.textField}
@@ -77,7 +76,6 @@ export class ActivityPicker extends Component {
               
             margin="normal"
             variant="filled"
-        border="white"
             fullWidth
             InputLabelProps={{
               className: classes.floatingLabelFocusStyle,
