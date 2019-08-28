@@ -61,6 +61,7 @@ export class ActivityPicker extends Component {
         <form className={classes.container} noValidate autoComplete="off">
       <TextField 
         style={{ fontFamily: "monospace", color: 'white', backgroundColor: "none" }}
+        error
             id="outlined-select"
             select
             className={classes.textField}
@@ -75,7 +76,7 @@ export class ActivityPicker extends Component {
               }}
               
             margin="normal"
-            variant="outlined"
+            variant="filled"
             fullWidth
             InputLabelProps={{
               className: classes.floatingLabelFocusStyle,
