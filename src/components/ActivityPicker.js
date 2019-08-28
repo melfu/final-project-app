@@ -61,8 +61,7 @@ export class ActivityPicker extends Component {
         <form className={classes.container} noValidate autoComplete="off">
       <TextField 
         style={{ fontFamily: "monospace", color: 'white', backgroundColor: "none" }}
-        
-            id="outlined-select"
+            id="filled-uncontrolled"
             select
             className={classes.textField}
             label="What type of event are you looking for?"
