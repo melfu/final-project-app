@@ -57,6 +57,7 @@ class App extends Component {
       <Provider store={store}>
         <Router >
           <div className="App" style={{ backgroundImage: `url(${Background})`, opacity: 1, backgroundPosition: 'center', backgroundSize: 'cover' }}>
+          <div>
           <Navbar />
           <Route exact path="/" component={Landing} />
           <Route exact path="/register" component={Register} />
@@ -68,6 +69,7 @@ class App extends Component {
           <Switch>
             <PrivateRoute exact path="/dashboard" component={() =>  <Dashboard setEvents={this.setEvents} />} />
           </Switch>
+          </div>
           </div>
         </Router>
       </Provider>
