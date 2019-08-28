@@ -36,6 +36,7 @@ if (localStorage.jwtToken) {
   }
 } 
 // -------------------------------------------------- //
+
 class App extends Component {
   constructor(props) {
     super(props);
