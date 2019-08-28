@@ -61,7 +61,7 @@ export class ActivityPicker extends Component {
         <form className={classes.container} noValidate autoComplete="off">
       <TextField 
         style={{ fontFamily: "monospace", color: 'white', backgroundColor: "none" }}
-        error
+        
             id="outlined-select"
             select
             className={classes.textField}
