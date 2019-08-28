@@ -97,7 +97,7 @@ render() {
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image= {event.logo ? event.logo.url : url ("../backgroundImage.jpg")}
+                    image= {event.logo ? event.logo.url : `url ("../backgroundImage.jpg")`}
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
