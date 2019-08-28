@@ -9,8 +9,9 @@ class Landing extends Component {
         color: 'white',
         textShadowOffset: { width: 2, height: 2 },
         textShadowRadius: 1,
-        textShadowColor: '#000' , 
-        height: "75vh", 
+        textShadowColor: '#000',
+        height: 100%,
+        //height: "75vh", 
         opacity: 9 
         }} 
         className="container valign-wrapper">
