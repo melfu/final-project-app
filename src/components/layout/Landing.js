@@ -10,9 +10,7 @@ class Landing extends Component {
         textShadowOffset: { width: 2, height: 2 },
         textShadowRadius: 1,
         textShadowColor: '#000',
-        height: 100%,
-        //height: "75vh", 
-        opacity: 9 
+        height: "75vh", 
         }} 
         className="container valign-wrapper">
         <div className="row">
