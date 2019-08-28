@@ -6,7 +6,6 @@ import TextField from '@material-ui/core/TextField';
 const styles = theme => ({
   floatingLabelFocusStyle: {
     fontFamily: "monospace",
-    border: "1px solid white"
 },
   root: {
   minHeight: '675px',
