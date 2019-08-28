@@ -6,7 +6,8 @@ import TextField from '@material-ui/core/TextField';
 const styles = theme => ({
   floatingLabelFocusStyle: {
     color: "white",
-    fontFamily: "monospace"
+    fontFamily: "monospace",
+    border: "white"
 },
   root: {
   minHeight: '675px',
@@ -76,6 +77,7 @@ export class ActivityPicker extends Component {
               
             margin="normal"
             variant="filled"
+        border="white"
             fullWidth
             InputLabelProps={{
               className: classes.floatingLabelFocusStyle,
