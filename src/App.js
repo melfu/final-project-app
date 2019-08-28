@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./backgroundImage.jpg";
+import Background from "./backgroundImage.jpg";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
@@ -56,7 +56,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router >
-          <div className="App" style={{ backgroundImage: `url ("./backgroundImage.jpg")`, opacity: 0.6 }}>
+          <div className="App" style={{ backgroundImage: `url(${Background})`, opacity: 0.6 }}>
           <Navbar />
           <Route exact path="/" component={Landing} />
           <Route exact path="/register" component={Register} />
