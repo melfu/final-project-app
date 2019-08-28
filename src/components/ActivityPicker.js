@@ -79,6 +79,7 @@ export class ActivityPicker extends Component {
             fullWidth
             InputLabelProps={{
               className: classes.floatingLabelFocusStyle,
+              shrink: true,
           }}
             InputProps={{ style: { fontFamily: "monospace", color: "white" } }}
 
