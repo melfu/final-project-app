@@ -64,7 +64,7 @@ export class ActivityPicker extends Component {
             id="filled-uncontrolled"
             select
             className={classes.textField}
-            placeholder="What type of event are you looking for?"
+            label="What type of event are you looking for?"
 
             value={this.state.anchorEl}
             onChange={this.handlePickActivity}
